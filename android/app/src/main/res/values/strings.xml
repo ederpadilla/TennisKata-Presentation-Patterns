@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TennisKata Presentation Patterns</string>
+    <string name="player_1_button">Player 1</string>
+    <string name="player_2_button">Player 2</string>
+</resources>

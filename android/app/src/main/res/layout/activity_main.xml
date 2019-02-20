@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".mvc.MainActivity">
 
     <fragment
         android:id="@+id/scoreFragment"
-        android:name="io.github.gianpamx.tenniskatapresentationpatterns.ScoreFragment"
+        android:name="io.github.gianpamx.tenniskatapresentationpatterns.mvc.ScoreFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

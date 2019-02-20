@@ -1,8 +1,8 @@
-package io.github.gianpamx.tenniskatapresentationpatterns
+package io.github.gianpamx.tenniskatapresentationpatterns.mvp
 
-class Model(val scoreFragment: ScoreFragment?,
-            var player1score: Score = Score.Love,
-            var player2score: Score = Score.Love
+class Model(
+        var player1score: Score = Score.Love,
+        var player2score: Score = Score.Love
 ) {
     enum class Score {
         Love,
@@ -16,9 +16,9 @@ class Model(val scoreFragment: ScoreFragment?,
         Winner
     }
 
-    fun player1() {
+    fun player1(): Pair<Score, Score> {
         if (player1score == Score.Winner || player2score == Score.Winner) {
-            return
+            return Pair(player1score, player2score)
         }
 
         when (player1score) {
@@ -50,12 +50,12 @@ class Model(val scoreFragment: ScoreFragment?,
             Score.Winner -> {
             }
         }
-        scoreFragment?.updateView()
+        return Pair(player1score, player2score)
     }
 
-    fun player2() {
+    fun player2(): Pair<Score, Score> {
         if (player1score == Score.Winner || player2score == Score.Winner) {
-            return
+            return Pair(player1score, player2score)
         }
 
         when (player2score) {
@@ -87,6 +87,6 @@ class Model(val scoreFragment: ScoreFragment?,
             Score.Winner -> {
             }
         }
-        scoreFragment?.updateView()
+        return Pair(player1score, player2score)
     }
 }

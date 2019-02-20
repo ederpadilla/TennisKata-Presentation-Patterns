@@ -1,10 +1,11 @@
-package io.github.gianpamx.tenniskatapresentationpatterns
+package io.github.gianpamx.tenniskatapresentationpatterns.mvc
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.github.gianpamx.tenniskatapresentationpatterns.R
 import kotlinx.android.synthetic.main.fragment_score.*
 
 /**

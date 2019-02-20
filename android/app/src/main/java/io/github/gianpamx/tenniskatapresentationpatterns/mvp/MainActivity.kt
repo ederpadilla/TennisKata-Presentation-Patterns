@@ -1,29 +1,31 @@
-package io.github.gianpamx.tenniskatapresentationpatterns
+package io.github.gianpamx.tenniskatapresentationpatterns.mvp
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
+import io.github.gianpamx.tenniskatapresentationpatterns.R
+import kotlinx.android.synthetic.main.fragment_score.*
 
 /**
- * This is the controller
+ * This is the ActualView
  */
-class MainActivity : AppCompatActivity(), ScoreFragment.Container {
+class MainActivity : AppCompatActivity(), Presenter.View {
     lateinit var model: Model
+    lateinit var presenter: Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_score)
 
         model = if (savedInstanceState == null) {
-            Model(scoreFragment as? ScoreFragment)
+            Model()
         } else {
             Model(
-                    scoreFragment as? ScoreFragment,
                     savedInstanceState.get("player1") as Model.Score,
                     savedInstanceState.get("player2") as Model.Score
             )
         }
+        presenter = Presenter(this, model)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -32,16 +34,16 @@ class MainActivity : AppCompatActivity(), ScoreFragment.Container {
         outState?.putSerializable("player2", model.player2score)
     }
 
-    override fun onScoreFragmentReady(scoreFragment: ScoreFragment) {
-        scoreFragment.model = model
-        scoreFragment.updateView()
-    }
-
     fun player1ButtonOnClickListener(view: View) {
-        model.player1()
+        presenter.player1()
     }
 
     fun player2ButtonOnClickListener(view: View) {
-        model.player2()
+        presenter.player2()
+    }
+
+    override fun onScoreChange(player1Score: String, player2Score: String) {
+        player1TextView.text = player1Score
+        player2TextView.text = player2Score
     }
 }

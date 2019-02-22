@@ -1,8 +1,8 @@
 package io.github.gianpamx.tenniskatapresentationpatterns.mvp
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import io.github.gianpamx.tenniskatapresentationpatterns.R
 import kotlinx.android.synthetic.main.fragment_score.*
 
